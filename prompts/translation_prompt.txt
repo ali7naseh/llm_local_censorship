@@ -1,0 +1,9 @@
+Translate the following text into {target_language}.
+
+Preserve the original meaning exactly.
+Do not summarize, simplify, omit, or add any information.
+Preserve refusals, hedging, safety language, and template-like wording exactly in meaning.
+Return ONLY the translation.
+
+Text:
+{text}
