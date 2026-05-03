@@ -1,5 +1,11 @@
 # llm_local_censorship
 
+This repository contains anonymized artifact materials associated with the submission. The artifact provides a lightweight implementation of the censorship measurement framework used in the paper, including prompt templates, generation templates, judge-score calibration utilities, and analysis scripts for global, model-level local, and group-level censorship.
+
+The repository is intended to document the main components of the experimental pipeline. Some files are provided as templates rather than end-to-end reproduction scripts, because the original experiments used a mix of API-hosted models, locally hosted GPU models, provider-specific interfaces, and data artifacts that may be subject to safety, licensing, or platform-term constraints.
+
+
+
 ## Prompt Templates
 
 The `prompts/` directory contains the main prompt templates used in the experiments. These files are provided separately so that the prompts can be inspected without searching through the code.
