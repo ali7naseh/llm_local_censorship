@@ -99,7 +99,7 @@ python generation/generate_dataset_template.py \
 
 ## Censorship Analysis Framework
 
-The `analysis/` directory contains the core code templates for computing the censorship metrics used in the paper. The analysis assumes that model responses have already been generated and scored by LLM judges. Each judge-scored model file should contain the prompt text and judge-score columns.
+The `censorship framework/` directory contains the core code templates for computing the censorship metrics used in the paper. The analysis assumes that model responses have already been generated and scored by LLM judges. Each judge-scored model file should contain the prompt text and judge-score columns.
 
 ### Files
 
