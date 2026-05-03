@@ -26,6 +26,7 @@ The `data/` directory contains releasable data artifacts associated with the exp
 
 - `data/calibration_set.csv`: calibration prompt-response pairs with selected judge scores used for score normalization.
 - `data/censorship_dataset.csv`: representative examples from the curated local-censorship prompt dataset, where release is appropriate.
+- `data/uncensored_scores.pkl`: uncensored prompt-response examples with judge scores used to estimate the uncensored baseline for the global censorship analysis.
 
 ### Expected Dataset Columns
 
@@ -44,6 +45,7 @@ The calibration score file uses fields such as:
 - `judge_grok_score`: censorship score from one LLM judge.
 - `judge_gpt54_score`: censorship score from one LLM judge.
 
+The uncensored score file is used in the global censorship analysis to compute the empirical uncensored baseline. It contains prompt-response pairs and selected judge-score columns in the same format as the calibration score files.
 
 ## Generation Templates
 
