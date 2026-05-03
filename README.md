@@ -20,13 +20,12 @@ Some scripts may also include these prompts inline for convenience. The files in
 
 ## Data Artifacts
 
-The `data/` directory contains data schemas and releasable data artifacts associated with the experiments. Some datasets or model outputs may be released only in partial, redacted, or representative form due to safety, licensing, provider-term, or political-sensitivity considerations.
+The `data/` directory contains releasable data artifacts associated with the experiments.
 
 ### Files
 
-- `data/schema.md`: description of the main dataset fields used in the analysis.
-- `data/calibration_scores.csv`: calibration prompt-response pairs with selected judge scores used for score normalization.
-- `data/sample_curated_prompts.csv`: representative or redacted examples from the curated local-censorship prompt dataset, where release is appropriate.
+- `data/calibration_set.csv`: calibration prompt-response pairs with selected judge scores used for score normalization.
+- `data/censorship_dataset.csv`: representative examples from the curated local-censorship prompt dataset, where release is appropriate.
 
 ### Expected Dataset Columns
 
@@ -45,10 +44,6 @@ The calibration score file uses fields such as:
 - `judge_grok_score`: censorship score from one LLM judge.
 - `judge_gpt54_score`: censorship score from one LLM judge.
 
-### Availability Notes
-
-Full prompt datasets, model responses, and judge-score files may not be redistributed in full in all cases. When full release is restricted, the repository provides schemas, representative samples, or redacted files to document the artifact structure and how the data was used in the study.
-
 
 ## Generation Templates
 
@@ -59,8 +54,8 @@ The generation templates illustrate the common interface used across models and 
 ### Files
 
 - `generation/api_model_wrapper_template.py`: template for OpenAI-compatible API-hosted models.
-- `generation/hf_gpu_model_wrapper_template.py`: template for locally hosted Hugging Face models.
-- `generation/response_schema.md`: description of the normalized model-response format.
+- `generation/gpu_model_wrapper_template.py`: template for locally hosted Hugging Face models.
+- `generation/generate_dataset_template.py`: template for generation for the whole dataset
 
 ### Normalized Interface
 
@@ -71,7 +66,7 @@ Each model wrapper returns a dictionary with the following fields:
 - `usage`: token-usage metadata, when available.
 - `raw_text`: raw generated text before parsing, when applicable.
 
-The downstream censorship scoring and analysis scripts operate primarily on the `text` and `thinking` fields. Models that do not expose reasoning traces use an empty string for `thinking`.
+Models that do not expose reasoning traces use an empty string for `thinking`.
 
 
 
@@ -108,11 +103,11 @@ The `analysis/` directory contains the core code templates for computing the cen
 
 ### Files
 
-- `analysis/framework_utils.py`: shared utility functions for loading datasets, calibrating judge scores, building prompt-by-model score matrices, and computing global, model-level local, and group-level censorship metrics.
-- `analysis/run_global_censorship_template.py`: template for computing global censorship relative to an uncensored baseline.
-- `analysis/run_local_censorship_template.py`: template for computing model-level local censorship by comparing a target model against a reference set.
-- `analysis/run_group_censorship_template.py`: template for computing group-level censorship by comparing a target group of models against a reference group.
-- `analysis/plots/`: optional plotting templates for visualizing framework outputs.
+- `censorship framework/framework_utils.py`: shared utility functions for loading datasets, calibrating judge scores, building prompt-by-model score matrices, and computing global, model-level local, and group-level censorship metrics.
+- `censorship framework/run_global_censorship_template.py`: template for computing global censorship relative to an uncensored baseline.
+- `censorship framework/run_local_censorship_template.py`: template for computing model-level local censorship by comparing a target model against a reference set.
+- `censorship framework/run_group_censorship_template.py`: template for computing group-level censorship by comparing a target group of models against a reference group.
+- `censorship framework/plots/`: optional plotting templates for visualizing framework outputs.
 
 ### Inputs
 
